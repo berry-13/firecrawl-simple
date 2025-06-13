@@ -37,7 +37,9 @@ jobs:
           context: ./apps/api
           file: ./apps/api/Dockerfile
           push: true
-          tags: ghcr.io/${{ env.IMAGE_NAMESPACE }}/firecrawl:pr-${{ github.event.number }}
+          tags: |
+            ghcr.io/${{ env.IMAGE_NAMESPACE }}/firecrawl:pr-${{ github.event.number }}
+            ghcr.io/${{ env.IMAGE_NAMESPACE }}/firecrawl:latest
           build-args: |
             PORT=8080
 
@@ -69,6 +71,8 @@ jobs:
           context: ./apps/puppeteer-service-ts/
           file: ./apps/puppeteer-service-ts/Dockerfile
           push: true
-          tags: ghcr.io/${{ env.IMAGE_NAMESPACE }}/puppeteer-service-ts:pr-${{ github.event.number }}
+          tags: |
+            ghcr.io/${{ env.IMAGE_NAMESPACE }}/puppeteer-service-ts:pr-${{ github.event.number }}
+            ghcr.io/${{ env.IMAGE_NAMESPACE }}/puppeteer-service-ts:latest
           build-args: |
             PORT=3000
